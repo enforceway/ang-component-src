@@ -10,7 +10,9 @@ require([
     'angular-route',
     'angular-resource',
     'angular-sanitize',
-    'angular-ui-calendar'
+    'angular-ui-calendar',
+
+    'services/baseService'
 ],
 function(menu, $, angular, routeApp) {
     'use strict';
@@ -21,6 +23,5 @@ function(menu, $, angular, routeApp) {
         'ui.calendar'
     );
     routeApp.install(menu);
-    require(['mocks']);
     angular.bootstrap(document, [routeApp.module.name]);
 });

@@ -12,6 +12,7 @@ define(['app-config/env'], function(env) {
             deps: ['dependencies'] // can add 'devDependencies' as well
         },
         paths: {
+            'G' : 'data/G',
             'routeApp': 'model/routeApp',
 
             'angular': '../../bower_components/angular/angular',

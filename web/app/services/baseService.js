@@ -2,7 +2,7 @@ define(['routeApp', 'data/menu'], function(app, menu) {
     'use strict';
     function _error() {};
 
-    app.service('httpService', ['$q', '$http', function($q, $resource) {
+    app.module.service('httpService', ['$q', '$http', function($q, $http) {
         return {
             post: function(url, urlParam, param, callback) {
                 if(!callback) {
@@ -49,12 +49,20 @@ define(['routeApp', 'data/menu'], function(app, menu) {
                     callback = param;
                     param = {};
                 }
-                $resource(url, param).query(callback, _error);
+                $http({
+                    method: 'GET',
+                    url: url,
+                    data: param
+                }).then(function(response) {
+                    return response;
+                }, function(response) {
+                    return response;
+                });
             }
         };
     }]);
 
-    app.service('restHttpService', ['$q', '$resource', function($q, $resource) {
+    app.module.service('restHttpService', ['$q', '$resource', function($q, $resource) {
         return {
             post: function(url, urlParam, param, callback) {
                 if(!callback) {

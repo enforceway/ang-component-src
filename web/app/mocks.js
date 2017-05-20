@@ -1,3 +1,0 @@
-define(['routeApp'], function(routeApp) {
-
-});

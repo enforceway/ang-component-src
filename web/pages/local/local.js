@@ -1,12 +1,15 @@
 define([
     'routeApp',
+    'G',
     'moment',
-    'angular-ui-calendar'
-], function(routeApp) {
+    'angular-ui-calendar',
+    ''
+], function(routeApp, G) {
     'use strict';
 
-    routeApp.controller('localCtrl', ['$scope', function($scope) {
-        $scope.str = "this is local page"
+    routeApp.controller('localCtrl', ['$scope', 'httpService', function($scope, httpService) {
+
+        $scope.str = "this is local page";
         $scope.eventSources = [];
         $scope.uiConfig = {
             calendar:{
@@ -22,7 +25,13 @@ define([
                 eventResize: $scope.alertOnResize
             }
         };
+        $scope.getAllNames = function() {
 
+            httpService.get(G.api.getAllNames, function(data) {
+                console.log(data);
+            });
+        };
+        $scope.getAllNames();
 
     }]);
 
